@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PagesController
+class PagesController extends AbstractController
 {
     /**
      * Page d'accueil site upt golf
@@ -16,6 +17,6 @@ class PagesController
      */
     public function home()
     {
-        return new Response("Bienvenue sur le site de l'upt golf");
+        return $this->render("/home.html.twig");
     }
 }
