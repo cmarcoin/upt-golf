@@ -7,4 +7,44 @@
             <p class="lead">La section golf de l'Université Pour Tous (UPT)</p>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ asset('/images/conditions-inscription.jpeg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Conditions d'inscription</h5>
+                        <p class="card-text">Tous niveaux Ambiance conviviale et sympa Cotisation UPT 58 € Cotisation Section Golf 40 € Débutants encadrés, carte verte et licente FFG exigées pour jouer sur les golfs</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ asset('/images/organisation.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Organisation</h5>
+                        <p class="card-text">Une partie tous les lundi à 9h00 Equipes aléatoires Golfs à 1h30 de Paris Green Fee négocié par l'UPT Déjeuner pour ceux qui le souhaitent</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ asset('/images/escapade.jpeg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Escapades</h5>
+                        <p class="card-text">Des "escapades" golfiques de 2, 3 ou 4 jours sont organisées tous les ans dans des régions de France, permettant de découvrir des nouveaux golfs plus lointains.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/three.js"></script>
+    <script src="/js/Projector.js"></script>
+    <script src="/js/CanvasRenderer.js"></script>
+    <script src="/js/stats.js"></script>
+    <script src="/js/balle_UPT.js"></script>    
 {% endblock %}
