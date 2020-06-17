@@ -2,10 +2,11 @@
 
 namespace App\DataFixtures;
 
+use Faker\Factory;
 use App\Entity\Golf;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Faker\Factory;
 
 class AppFixtures extends Fixture
 {
@@ -36,6 +37,22 @@ class AppFixtures extends Fixture
 
             $manager->persist($golf);
         }
+
+
+        for ($i = 1; $i <= 70; $i++) {
+            $user = new User();
+
+
+            $golf->setName($name)
+                ->setPhoneNumber($phoneNumber)
+                ->setWebsiteUrl($websiteUrl)
+                ->setAddress($address)
+                ->setComments($comments)
+                ->setEmail($email)
+                ->setContact($contact);
+        }
+
+
         $manager->flush();
     }
 }
