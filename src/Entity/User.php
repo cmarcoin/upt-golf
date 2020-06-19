@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -61,6 +63,16 @@ class User
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $address;
+
+    /**
+     * @ORM\OneToMany(targetEntity=PlayersGap::class, mappedBy="playerOneId", orphanRemoval=true)
+     */
+    private $playersGaps;
+
+    public function __construct()
+    {
+        $this->playersGaps = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -171,6 +183,37 @@ class User
     public function setAddress(?string $address): self
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PlayersGap[]
+     */
+    public function getPlayersGaps(): Collection
+    {
+        return $this->playersGaps;
+    }
+
+    public function addPlayersGap(PlayersGap $playersGap): self
+    {
+        if (!$this->playersGaps->contains($playersGap)) {
+            $this->playersGaps[] = $playersGap;
+            $playersGap->setPlayerOneId($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlayersGap(PlayersGap $playersGap): self
+    {
+        if ($this->playersGaps->contains($playersGap)) {
+            $this->playersGaps->removeElement($playersGap);
+            // set the owning side to null (unless already changed)
+            if ($playersGap->getPlayerOneId() === $this) {
+                $playersGap->setPlayerOneId(null);
+            }
+        }
 
         return $this;
     }

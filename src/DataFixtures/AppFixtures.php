@@ -42,16 +42,26 @@ class AppFixtures extends Fixture
         for ($i = 1; $i <= 70; $i++) {
             $user = new User();
 
+            $firstName = $faker->firstName();
+            $lastName = $faker->lastName();
+            $email = $faker->email();
+            $hash = $faker->password();
+            $mobilePhone = $faker->phoneNumber();
+            $phone = $faker->phoneNumber();
+            $licence = $faker->randomNumber(9);
+            $address = $faker->Address();
+            $handicap = $faker->randomFloat(2, 0, 53.50);
 
-            $golf->setName($name)
-                ->setPhoneNumber($phoneNumber)
-                ->setWebsiteUrl($websiteUrl)
-                ->setAddress($address)
-                ->setComments($comments)
+            $user->setFirstName($firstName)
+                ->setLastName($lastName)
                 ->setEmail($email)
-                ->setContact($contact);
+                ->setHash($hash)
+                ->setMobilePhone($mobilePhone)
+                ->setPhone($phone)
+                ->setLicence($licence)
+                ->setAddress($address)
+                ->setHandicap($handicap);
         }
-
 
         $manager->flush();
     }
