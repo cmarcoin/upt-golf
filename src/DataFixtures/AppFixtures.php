@@ -16,6 +16,7 @@ class AppFixtures extends Fixture
         // Nouvelle factory faker en français
         $faker = Factory::create('fr_FR');
 
+        // Création des golfs
         for ($i = 1; $i <= 30; $i++) {
             $golf = new Golf();
 
@@ -38,7 +39,7 @@ class AppFixtures extends Fixture
             $manager->persist($golf);
         }
 
-
+        // Création des users
         for ($i = 1; $i <= 70; $i++) {
             $user = new User();
 
@@ -62,6 +63,12 @@ class AppFixtures extends Fixture
                 ->setAddress($address)
                 ->setHandicap($handicap);
         }
+
+        // Création des écarts entre les joueurs
+
+
+
+
 
         $manager->flush();
     }
