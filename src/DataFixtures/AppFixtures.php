@@ -62,14 +62,11 @@ class AppFixtures extends Fixture
                 ->setLicence($licence)
                 ->setAddress($address)
                 ->setHandicap($handicap);
+
+            $manager->persist($user);
         }
 
         // Création des écarts entre les joueurs
-
-
-
-
-
         $manager->flush();
     }
 }

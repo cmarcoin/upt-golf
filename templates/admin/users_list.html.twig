@@ -1,0 +1,12 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <p>Liste des utilisateurs</p>
+        <ul class="list-group">
+            {% for user in users %}
+                <li class="list-group-item">Prénom : {{ user.firstName }} - nom : {{ user.lastName }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

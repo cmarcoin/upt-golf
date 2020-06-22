@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\GolfRepository;
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=GolfRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Golf
 {
@@ -51,6 +53,28 @@ class Golf
      * @ORM\Column(type="text", nullable=true)
      */
     private $comments;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
+
+    /**
+     * Création automatique du slug sur la base du nom du golf
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     * 
+     * @return void
+     */
+    public function initializeSlug()
+    {
+        if (empty($this->slug)) {
+            $slugifier = new Slugify();
+            $this->setSlug($slugifier->slugify($this->name));
+        }
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +161,18 @@ class Golf
     public function setComments(?string $comments): self
     {
         $this->comments = $comments;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
