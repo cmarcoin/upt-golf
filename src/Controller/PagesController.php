@@ -11,12 +11,26 @@ class PagesController extends AbstractController
     /**
      * Page d'accueil site upt golf
      * 
-     * @Route("/", name="homepage")
+     * @Route("/", name="homepage", methods={"GET"})
      *
      * @return void
      */
     public function home()
     {
         return $this->render("/home.html.twig");
+    }
+
+    /**
+     * Liste des parties à venir
+     * 
+     * @Route("/games", name="games", methods={"GET"})
+     *  
+     * @return void
+     */
+    public function games()
+    {
+        $gamesList = ["Partie 1", "Partie 2", "Partie 3"];
+
+        return $this->render("games.html.twig", ['gamesList' => $gamesList]);
     }
 }
